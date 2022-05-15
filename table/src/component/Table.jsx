@@ -1,15 +1,6 @@
 import { useState } from "react";
-// import { Student } from "./Student";
-const Student = [
-    {id:1, name:"narjes", lastName:"sheikhali", job:"daveloper"},
-    {id:2, name:"narjes", lastName:"sheikhali", job:"daveloper"},
-    {id:3, name:"narjes", lastName:"sheikhali", job:"daveloper"},
-    {id:4, name:"narjes", lastName:"sheikhali", job:"daveloper"},
-    {id:5, name:"narjes", lastName:"sheikhali", job:"daveloper"},
-    {id:6, name:"narjes", lastName:"sheikhali", job:"daveloper"},
-    {id:7, name:"narjes", lastName:"sheikhali", job:"daveloper"},
-    {id:8, name:"narjes", lastName:"sheikhali", job:"daveloper"},
-]
+import { Student } from "./Student";
+
 
 const Table = ()=>{
     const [users, setUsers] = useState(Student)
@@ -20,7 +11,10 @@ const Table = ()=>{
         const name = data.get("name")
         const lastName = data.get("lastName")
         const job = data.get("job")
-        setUsers([...users, {id:23,name, lastName, job}])
+        setUsers([...users, {id:Math.floor(Math.random()*20),name, lastName, job}])
+    }
+    const handleDelete = (id)=>{
+        setUsers(users.filter((user)=>user.id !== id))
     }
     return(
         <>
@@ -42,7 +36,7 @@ const Table = ()=>{
                  <td>{user.job}</td>
                  <td>
                      <button>update</button>
-                     <button>delete</button>
+                     <button onClick={()=>handleDelete(user.id)}>delete</button>
                  </td>
              </tr>
          ))}
