@@ -16,6 +16,10 @@ const Table = ()=>{
     const handleDelete = (id)=>{
         setUsers(users.filter((user)=>user.id !== id))
     }
+
+    const handleUpdate = (e)=>{
+setUsers(e.name = e.value)
+    }
     return(
         <>
         <table>
@@ -35,7 +39,7 @@ const Table = ()=>{
                  <td>{user.lastName}</td>
                  <td>{user.job}</td>
                  <td>
-                     <button>update</button>
+                     <button onClick={()=>handleUpdate()}>update</button>
                      <button onClick={()=>handleDelete(user.id)}>delete</button>
                  </td>
              </tr>
