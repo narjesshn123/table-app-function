@@ -17,9 +17,16 @@ const Table = ()=>{
         setUsers(users.filter((user)=>user.id !== id))
     }
 
-    const handleUpdate = (e)=>{
-setUsers(e.name = e.value)
-    }
+    const handleUpdate = (oldUser)=>{
+        const data = new FormData()
+        const name = data.get("name")
+        const lastName = data.get("lastName")
+        const job = data.get("job") 
+        setUsers(...users, users.map((user)=>
+        user.id === oldUser.id ?
+        { name, lastName, job}
+        :user))
+      }
     return(
         <>
         <table>
@@ -39,7 +46,7 @@ setUsers(e.name = e.value)
                  <td>{user.lastName}</td>
                  <td>{user.job}</td>
                  <td>
-                     <button onClick={()=>handleUpdate()}>update</button>
+                     <button onClick={()=>handleUpdate(user)}>update</button>
                      <button onClick={()=>handleDelete(user.id)}>delete</button>
                  </td>
              </tr>
