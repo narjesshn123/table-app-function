@@ -1,9 +1,15 @@
-import { Student } from "./Student"
-export const Table = ({users, setUsers, setUser})=>{
+import {Children, useState } from 'react';
+import { Form } from './Form'
+import './Table.css'
+export const Table = ({users, setUsers, setUser, user})=>{
+    const[showInfo, setShowInfo] = useState(false)
+
     const handleDelete = (id)=>{
-        setUsers(users.filter(user=>user.id !== id))
+        setUsers(users.filter(user => user.id !== id))
     }
     return(
+        <>
+        <nav>
         <table>
             <thead>
                 <tr>
@@ -11,6 +17,13 @@ export const Table = ({users, setUsers, setUser})=>{
                     <td>firstName</td>
                     <td>lastName</td>
                     <td>job</td>
+                    <td className="plus">
+                        <button onClick={()=>{setShowInfo(!showInfo)}} type='radio'>
+                            {showInfo ? "-":  "+"}
+                       
+                            </button>
+                            
+                    </td>
                 </tr>
             </thead>
             <tbody>
@@ -21,12 +34,21 @@ export const Table = ({users, setUsers, setUser})=>{
                         <td>{item.lastName}</td>
                         <td>{item.job}</td>
                         <td>
-                            <button onClick={()=>{setUser(item)}}>update</button>
+                            <button onClick={()=>{setUser(item)}}>
+                             
+                                update</button>
                             <button onClick={()=>handleDelete(item.id)}>delete</button>
                         </td>
                     </tr>
                 ))}
             </tbody>
-        </table>
+       </table>
+        </nav>
+        <h1>
+                 {(showInfo) &&
+            (<Form user={user} setUser={setUser} users={users} setUsers={setUsers}>{Children}</Form>)}
+        
+        </h1>
+        </>
 
     )}

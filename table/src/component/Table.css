@@ -1,0 +1,8 @@
+.plus{
+    color: blue;
+    border-radius: 100%;
+    border: 1px solid rgba(201, 35, 107, 0);
+}
+.show{
+    visibility: hidden;
+}
