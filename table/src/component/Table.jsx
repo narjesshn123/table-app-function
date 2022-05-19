@@ -10,7 +10,7 @@ export const Table = ({users, setUsers, setUser, user})=>{
     return(
         <>
         <nav>
-        <table>
+        <table className='table'>
             <thead>
                 <tr>
                     <td>id</td>
@@ -34,7 +34,7 @@ export const Table = ({users, setUsers, setUser, user})=>{
                         <td>{item.lastName}</td>
                         <td>{item.job}</td>
                         <td>
-                            <button onClick={()=>{setUser(item)}}>
+                            <button onClick={()=>{setUser(item); setShowInfo(!showInfo)}}>
                              
                                 update</button>
                             <button onClick={()=>handleDelete(item.id)}>delete</button>

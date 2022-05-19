@@ -37,7 +37,13 @@ export const Form = ({users, setUsers, user, setUser})=>{
             <label htmlFor="job">job:</label>
             <input id="job" type={"text"} onChange={handleChange} name={"job"} value={user.job}></input>
             </div>
-            <input type={"submit"}></input>
+            <input style={{    backgroundColor: '#04AA6D',
+      border: 'none',
+      color: 'white',
+      padding: '16px 32px',
+      textDecoration: 'none',
+      margin: '4px 2px',
+      cursor: 'pointer'}} type={"submit"}></input>
         </form>
         </>
     )
